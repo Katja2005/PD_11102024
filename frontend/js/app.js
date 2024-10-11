@@ -4,14 +4,14 @@ window.onload = function() {
         event.preventDefault();
 
         let formData = new FormData(event.target);
-        let token = formData.get('token');
+         formData.get('token');
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/user', {
+            const response = await fetch('http://127.0.0.1:8000/api/user', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/html'
+                    'Content-Type': 'application/json '
                 }
             });
 
@@ -32,11 +32,14 @@ window.onload = function() {
     postForm.addEventListener('submit', async function(event) {
         event.preventDefault();
 
+    const title = document.getElementById('title');
+    const body = document.getElementById('body');
+
         let formData = new FormData(event.target);
-        let token = formData.get('token');
+      
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/posts', {
+            const response = await fetch('http://127.0.0.1:8000/api/posts', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -44,7 +47,7 @@ window.onload = function() {
                 },
                 body: JSON.stringify({
                     title: formData.get('title'),
-                    body: formData.get('title')
+                    body: formData.get('body')
                 })
             });
 
@@ -66,8 +69,8 @@ window.onload = function() {
 
     async function fetchAllPosts(token) {
         try {
-            const response = await fetch('http://127.0.0.1:8000/posts', {
-                method: 'POST',
+            const response = await fetch('http://127.0.0.1:8000/api/posts', {
+                method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
