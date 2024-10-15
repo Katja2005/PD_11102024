@@ -26,7 +26,7 @@ window.onload = function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json' // Pievienojiet šo galveni
+                    // 'Accept': 'application/json' // Pievienojiet šo galveni
                 },
                 body: JSON.stringify({
                     name,
